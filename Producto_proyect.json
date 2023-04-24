@@ -1,0 +1,65 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Producto",
+    "dateExported": "2023-03-30T22:28:06.204Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "31b3a10f-9e38-447b-aa79-2479eb151c09",
+            "colId": "ae22e501-ceb8-4564-a4c5-d267d0aaf2f3",
+            "containerId": "",
+            "name": "Mostrar todos los usuarios",
+            "url": "http://localhost:3000/api/product",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-03-30T22:22:21.186Z",
+            "modified": "2023-03-30T22:22:21.186Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e986a486-8830-4178-bcab-5161204f2172",
+            "colId": "ae22e501-ceb8-4564-a4c5-d267d0aaf2f3",
+            "containerId": "",
+            "name": "Insertar un usuario",
+            "url": "http://localhost:3000/api/product",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-03-30T22:23:01.764Z",
+            "modified": "2023-03-30T22:23:01.764Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "581a1c5e-c0d4-4acb-8da7-e514bfcff31e",
+            "colId": "ae22e501-ceb8-4564-a4c5-d267d0aaf2f3",
+            "containerId": "",
+            "name": "Actualizar un usuario",
+            "url": "http://localhost:3000/api/product",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2023-03-30T22:23:11.156Z",
+            "modified": "2023-03-30T22:23:11.156Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c42430aa-5607-4ef3-a2b4-452d4bbdb01e",
+            "colId": "ae22e501-ceb8-4564-a4c5-d267d0aaf2f3",
+            "containerId": "",
+            "name": "Eliminar un usuario",
+            "url": "http://localhost:3000/api/product",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-03-30T22:23:22.316Z",
+            "modified": "2023-03-30T22:23:22.316Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
