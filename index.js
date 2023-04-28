@@ -1,38 +1,7 @@
-
-// console.log("Hola".green);
-
-// let nombre = "Angel";
-// console.log(nombre);
-
-// const fs = require("fs")
-// const colors = require('colors');
-// const os = require("os");
-// console.log("Saitama".rainbow);
-// console.log(os.platform().red);
-// console.log(os.release().red);
-
-// fs.copyFile("package.json","copia.json",(err)=>{
-//     if (err) console.log("error".red)
-// });
-
-// const express = require("express");
-// const app = express();
-
-// app.get("/",(req, res)=>{
-//     res.send(`/imagen.html`)
-// })
-
-// app.get("/xd",(req, res)=>{
-//     res.send("What's up nigga?")
-// })
-
-// app.listen(4000,()=>{
-//     console.log(`Se ha conectado al puerto 4000`.green);
-// }
-
 //Importar los paquetes
 const express = require('express');
 const dotenv = require("dotenv");
+const cors = require('cors');
 
 //Llamando las rutas
 const routeProduct = require("./routes/products.routes.js")
@@ -43,13 +12,18 @@ const routeUser = require("./routes/users.routes.js")
 const app = express();
 dotenv.config(); 
 const port = process.env.PORT || 1000;
+const corsOptions = {
+    origin: 'https://mi-frontend.com'
+  };
 
 //configuración 
 app.use(express.json());
+app.use(cors(corsOptions));
 
 //MIDDLEWARES (Es un metodo que se ejecuta obligatoriamente para llamar la ruta)
 app.use("/api", routeProduct);
 app.use("/api", routeUser);
+
 
 //Rutas
 app.get("/home", (req,res)=>{
