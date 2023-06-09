@@ -1,15 +1,14 @@
 const dotenv = require("dotenv")
-const {createPool} = require("mysql2/promise");
+const { Pool } = require("pg");
 
 dotenv.config(); 
 
-
-const pool = createPool({
-user: process.env.DB_USER,
-password: process.env.DB_PASSWORD,
-host: process.env.DB_HOST,
-port: process.env.DB_PORT,
-database: process.env.DB_DATABASE,
+const pool = new Pool({
+  user: process.env.PG_USER,
+  password: process.env.PG_PASSWORD,
+  host: process.env.PG_HOST,
+  port: process.env.PG_PORT,
+  database: process.env.PG_DATABASE,
 });
 
-module.exports = pool;
+module.exports = { pool };

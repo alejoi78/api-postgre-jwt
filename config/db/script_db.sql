@@ -1,9 +1,15 @@
-CREATE DATABASE dbproduct collate 'utf8_general_ci'
+CREATE DATABASE firstapi;
 
-CREATE TABLE productos (
-    ID int not null primary key auto_increment,
-    DESCRIPCION varchar(50) not null,
-    PRECIO int(6),
-    ESTADO boolean 
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(40),
+    email TEXT
+);
 
-)
+INSERT INTO users (name, email)
+    VALUES ('joe', 'joe@ibm.com'),
+    ('ryan', 'ryan@faztweb.com');
+
+select * from users;
+
+

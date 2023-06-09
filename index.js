@@ -1,41 +1,45 @@
-//Importar los paquetes
-const express = require('express');
-const dotenv = require("dotenv");
-const cors = require('cors');
+const express = require("express");
+const { Pool } = require("pg");
+require("dotenv").config();
+
+const app = express();
 
 //Llamando las rutas
-const routeProduct = require("./routes/products.routes.js")
-const routeUser = require("./routes/users.routes.js")
+// const routeProduct = require("./routes/products.routes.js")
+const routeUser = require("./routes/users.routes.js");
+const routeAuth = require("./routes/authenticate.routes.js");
 
+// Cadena de conexión a la base de datos
+const connectionString = `postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DB}`;
 
-//Inicializando
-const app = express();
-dotenv.config(); 
-const port = process.env.PORT || 1000;
-const corsOptions = {
-    origin: 'https://mi-frontend.com'
-  };
-
-//configuración 
-app.use(express.json());
-app.use(cors(corsOptions));
-
-//MIDDLEWARES (Es un metodo que se ejecuta obligatoriamente para llamar la ruta)
-app.use("/api", routeProduct);
+//MIDDLEWARES
+// app.use("/api", routeProduct);
 app.use("/api", routeUser);
+app.use("/api", routeAuth);
 
+// Creando un objeto Pool para manejar conexiones a la base de datos
+const pool = new Pool({
+  connectionString: connectionString,
+});
 
-//Rutas
-app.get("/home", (req,res)=>{
-    res.send("<i>Hola mundo</i>")
-})
-app.get("/",(req,res)=>(
-    res.send(`Estas conectado en el puerto ${port}`)
-))
+// Conectándose a la base de datos
+pool.connect((err) => {
+  if (err) {
+    console.error("Connection error", err.stack);
+  } else {
+    console.log("Conectado a la base de datos exitosamente!");
+  }
+});
 
-//Puerto
-app.listen(port, () => 
-    console.log(`Servidor iniciado en el puerto ${port}`));
+// Definiendo una ruta de prueba
+app.get("/", (req, res) => {
+  res.send("La API está funcionando!");
+});
 
+// Iniciando el servidor
+app.listen(3000, () => {
+  console.log("Servidor escuchando en el puerto 3000");
+});
 
-
+// Cerrando la conexión a la base de datos
+pool.end();
